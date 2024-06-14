@@ -5,3 +5,4 @@ export PATH=$PATH:~/.local/bin:~/bin:~/.fzf/bin
 
 eval "$(oh-my-posh init zsh --config ~/.cache/oh-my-posh/themes/takuya.omp.json)"
 eval "$(fzf --zsh)"
+eval "$(zoxide init zsh --cmd cd)"

@@ -3,18 +3,38 @@
 sudo apt install zsh zoxide unzip neovim
 
 mkdir -p ~/.local/bin
-curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 
-chsh $USER -s /usr/bin/zsh
+if ! command -v oh-my-posh 
+then
+  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+fi
 
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-echo __--HERE--__
-pwd
-FILENAME=bat_0.24.0_$CHEZMOI_ARCH.deb
-curl -L https://github.com/sharkdp/bat/releases/latest/download/$FILENAME -o $FILENAME && sudo dpkg -i $FILENAME && rm $FILENAME
+if ! [ "$SHELL" = "/usr/bin/zsh" ] 
+then
+  chsh $USER -s /usr/bin/zsh
+fi
+
+if ! command -v fzf
+then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+fi
+
+if ! command -v bat
+then
+  FILENAME=bat_0.24.0_$CHEZMOI_ARCH.deb
+  curl -L https://github.com/sharkdp/bat/releases/latest/download/$FILENAME -o $FILENAME && sudo dpkg -i $FILENAME && rm $FILENAME
+fi
+
+if ! command -v eza
+then
+  FILENAME=eza_$HOSTTYPE-unknown-linux-gnu.tar.gz
+  curl -L https://github.com/eza-community/eza/releases/download/v0.18.17/$FILENAME | tar xz
+  chmod +x eza
+  mv eza ~/.local/bin/eza
+fi
 
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
-brew install neovim zoxide fzf jandedobbeleer/oh-my-posh/oh-my-posh bat
+brew install neovim zoxide fzf jandedobbeleer/oh-my-posh/oh-my-posh bat eza
 
 {{ end -}}

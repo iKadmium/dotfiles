@@ -1,8 +1,17 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/sh
+set -e
 sudo apt install zsh zoxide unzip neovim
 
 mkdir -p ~/.local/bin
+
+get_github_asset() {
+    REPO=$1
+    SEARCH=$2
+    RELEASES_URL=https://api.github.com/repos/$REPO/releases
+    ASSET_URL=$(curl -s $RELEASES_URL | jq -r ". | map(select(.prerelease == false and .draft == false and (.assets | any(.name | test(\"$SEARCH\")))) | .) | .[0] | .assets[] | select(.name | test(\"$SEARCH\")) | .browser_download_url" )
+    curl -s -L $ASSET_URL
+}
 
 if ! command -v oh-my-posh 
 then
@@ -16,25 +25,34 @@ fi
 
 if ! command -v fzf
 then
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  get_github_asset "junegunn/fzf" "fzf.*${CHEZMOI_OS}_${CHEZMOI_ARCH}.tar.gz" | tar xz
+  mv fzf ~/.local/bin/fzf
 fi
 
 if ! command -v bat
 then
-  FILENAME=bat_0.24.0_$CHEZMOI_ARCH.deb
-  curl -L https://github.com/sharkdp/bat/releases/latest/download/$FILENAME -o $FILENAME && sudo dpkg -i $FILENAME && rm $FILENAME
+  mkdir bat
+  get_github_asset "sharkdp/bat" "bat.*${HOSTTYPE}.*${CHEZMOI_OS}-gnu.tar.gz" | tar xzC ./bat --strip-components=1
+  mv bat/bat ~/.local/bin/bat
+  rm -fr bat
 fi
 
 if ! command -v eza
 then
-  FILENAME=eza_$HOSTTYPE-unknown-linux-gnu.tar.gz
-  curl -L https://github.com/eza-community/eza/releases/download/v0.18.17/$FILENAME | tar xz
+  get_github_asset "eza-community/eza" "eza_$HOSTTYPE-unknown-linux-gnu.tar.gz" | tar xz
   chmod +x eza
   mv eza ~/.local/bin/eza
 fi
 
+if ! command -v zellij
+then
+  get_github_asset "zellij-org/zellij" "zellij-$HOSTTYPE-unknown-linux-musl.tar.gz" | tar xz
+  chmod +x zellij
+  mv zellij ~/.local/bin/zellij
+fi
+
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
-brew install neovim zoxide fzf jandedobbeleer/oh-my-posh/oh-my-posh bat eza
+brew install neovim zoxide fzf jandedobbeleer/oh-my-posh/oh-my-posh bat eza zellij
 
 {{ end -}}

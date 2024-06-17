@@ -6,4 +6,7 @@ export PATH=$PATH:~/.local/bin:~/bin:~/.fzf/bin
 eval "$(oh-my-posh init zsh --config ~/.cache/oh-my-posh/themes/takuya.omp.json)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
+source ~/.local/zsh/zsh-autosuggestions.zsh
+source ~/.local/zsh/zsh-syntax-highlighting.zsh
 alias ls='eza --color=always --group-directories-first --icons'
+

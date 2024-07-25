@@ -1,11 +1,18 @@
+
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
 
+source ~/.antidote/antidote.zsh
+# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+antidote load
+
+alias ls='eza --icons=always --group-directories-first --color=always'
+alias less='less -r'
+
+eval "$(oh-my-posh init zsh --config ~/.themes/oh-my-posh/takuya.omp.json)"
+
 export PATH=$PATH:~/.local/bin:~/bin:~/.fzf/bin
 
-eval "$(oh-my-posh init zsh --config ~/.cache/oh-my-posh/themes/takuya.omp.json)"
-eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
-source ~/.local/zsh/zsh-autosuggestions.zsh
 alias ls='eza --color=always --group-directories-first --icons'
 

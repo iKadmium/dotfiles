@@ -25,7 +25,8 @@
         "backlight",
         "battery",
         "clock",
-        "tray"
+        "tray",
+        "custom/power"
     ],
     // Modules configuration
     "hyprland/submap": {

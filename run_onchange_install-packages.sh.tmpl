@@ -23,6 +23,7 @@ fi
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
+zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
 
 {{ if eq .chezmoi.os "linux" -}}
 # Install Linux-specific packages

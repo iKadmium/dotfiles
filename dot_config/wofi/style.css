@@ -1,0 +1,100 @@
+/* Dracula Theme for Wofi */
+
+* {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 14px;
+}
+
+window {
+    margin: 0px;
+    border: 2px solid #bd93f9;
+    border-radius: 10px;
+    background-color: rgba(40, 42, 54, 0.98);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+#input {
+    margin: 12px;
+    padding: 12px 16px;
+    border: 2px solid #44475a;
+    border-radius: 10px;
+    color: #f8f8f2;
+    background-color: #44475a;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#input:focus {
+    border-color: #bd93f9;
+    background-color: #282a36;
+}
+
+#inner-box {
+    margin: 8px;
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px 8px 8px 8px;
+    border: none;
+    background-color: transparent;
+}
+
+#text {
+    margin: 4px;
+    padding: 4px 8px;
+    color: #f8f8f2;
+}
+
+#entry {
+    padding: 6px 12px;
+    margin: 2px 8px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+#entry:hover {
+    background-color: #44475a;
+    border-color: #6272a4;
+}
+
+#entry:selected {
+    background-color: #bd93f9;
+    border-color: #bd93f9;
+    color: #282a36;
+    font-weight: bold;
+}
+
+#entry:selected #text {
+    color: #282a36;
+}
+
+#entry:nth-child(even) {
+    background-color: rgba(68, 71, 90, 0.2);
+}
+
+#entry:nth-child(even):hover {
+    background-color: #44475a;
+}
+
+#entry:nth-child(even):selected {
+    background-color: #bd93f9;
+    border-color: #bd93f9;
+}
+
+/* Image/Icon styling */
+#img {
+    margin-right: 12px;
+    background-color: transparent;
+}

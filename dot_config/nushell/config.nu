@@ -23,6 +23,9 @@ $env.config = {
     edit_mode: vi      # Or 'emacs'
 }
 
+
+$env.PATH ++= ['/home/linuxbrew/.linuxbrew/bin']
+
 # Aliases
 alias cat = bat
 alias top = btop

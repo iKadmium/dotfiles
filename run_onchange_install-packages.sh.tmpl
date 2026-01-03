@@ -1,58 +1,31 @@
-{{ if eq .chezmoi.os "linux" -}}
 #!/bin/sh
 set -e
-sudo apt install zsh zoxide unzip neovim
 
-mkdir -p ~/.local/bin
+# Package list
+COMMON_PACKAGES="
+neovim
+zoxide
+fzf
+bat
+nushell
+starship
+btop
+"
 
-get_github_asset() {
-    REPO=$1
-    SEARCH=$2
-    RELEASES_URL=https://api.github.com/repos/$REPO/releases
-    ASSET_URL=$(curl -s $RELEASES_URL | jq -r ". | map(select(.prerelease == false and .draft == false and (.assets | any(.name | test(\"$SEARCH\")))) | .) | .[0] | .assets[] | select(.name | test(\"$SEARCH\")) | .browser_download_url" )
-    curl -s -L $ASSET_URL
-}
+# Install common packages
+brew install $COMMON_PACKAGES
 
-if ! command -v oh-my-posh 
-then
-  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+# Change shell to nushell
+NU_PATH="$(brew --prefix nushell)/bin/nu"
+if ! [ "$SHELL" = "$NU_PATH" ]; then
+  chsh $USER -s $NU_PATH
 fi
 
-if ! [ "$SHELL" = "/usr/bin/zsh" ] 
-then
-  chsh $USER -s /usr/bin/zsh
-fi
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
 
-if ! command -v fzf
-then
-  get_github_asset "junegunn/fzf" "fzf.*${CHEZMOI_OS}_${CHEZMOI_ARCH}.tar.gz" | tar xz
-  mv fzf ~/.local/bin/fzf
-fi
-
-if ! command -v bat
-then
-  mkdir bat
-  get_github_asset "sharkdp/bat" "bat.*${HOSTTYPE}.*${CHEZMOI_OS}-gnu.tar.gz" | tar xzC ./bat --strip-components=1
-  mv bat/bat ~/.local/bin/bat
-  rm -fr bat
-fi
-
-if ! command -v eza
-then
-  get_github_asset "eza-community/eza" "eza_$HOSTTYPE-unknown-linux-gnu.tar.gz" | tar xz
-  chmod +x eza
-  mv eza ~/.local/bin/eza
-fi
-
-if ! command -v zellij
-then
-  get_github_asset "zellij-org/zellij" "zellij-$HOSTTYPE-unknown-linux-musl.tar.gz" | tar xz
-  chmod +x zellij
-  mv zellij ~/.local/bin/zellij
-fi
-
+{{ if eq .chezmoi.os "linux" -}}
+# Install Linux-specific packages
 {{ else if eq .chezmoi.os "darwin" -}}
-#!/bin/sh
-brew install neovim zoxide fzf jandedobbeleer/oh-my-posh/oh-my-posh bat eza zellij
-
+# Install macOS-specific packages
 {{ end -}}

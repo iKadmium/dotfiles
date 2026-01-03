@@ -1,0 +1,54 @@
+palette = "dracula"
+
+# The "format" defines the top line. The "line_break" and "character" create the second line.
+format = """
+[](purple)\
+$os\
+$directory\
+[](fg:purple bg:pink)\
+$git_branch\
+$git_status\
+[](fg:pink bg:orange)\
+$python\
+[](fg:orange)\
+$line_break\
+$character"""
+
+[palettes.dracula]
+background = '#282a36'
+purple = '#bd93f9'
+pink = '#ff79c6'
+orange = '#ffb86c'
+foreground = '#f8f8f2'
+
+[os]
+disabled = true
+style = "bg:purple fg:background"
+format = "[$symbol]($style)"
+
+[directory]
+style = "bg:purple fg:background"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = "󰊢 "
+style = "bg:pink fg:background"
+format = "[ $symbol$branch ]($style)"
+
+[git_status]
+style = "bg:pink fg:background"
+format = "[$all_status$ahead_behind]($style)"
+
+[python]
+symbol = " "
+style = "bg:orange fg:background"
+format = "[ $symbol($version) ]($style)"
+
+[line_break]
+disabled = false
+
+[character]
+success_symbol = "[󰄬](bold green)"
+error_symbol = "[󰅖](bold red)"

@@ -1,0 +1,207 @@
+exit
+env
+exit
+ls
+config nu
+ls -la
+env
+ls
+env
+ls
+exit
+config nu
+exit
+brew install starship
+ls
+starship 
+starship preset
+starship init
+starship init nu
+config nu
+exit
+ls
+config nu
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
+exit
+exit
+vim .config/starship.toml
+ls
+cd /
+ls
+cd ~
+ls
+cd Downloads/
+ls 
+cd ..
+vim .config/starship.toml
+ls
+vim .config/starship.toml
+ls
+exit
+systemctl sleep
+ls
+brew install chezmoi
+ls
+git clone https://github.com/iKadmium/dotfiles.git
+cd dotfiles/
+ls 
+ls
+rm dot_zsh_plugins.txt
+ls
+rm dot_zshrc
+ls
+ls dot_config/
+rm -rf dot_config/alacritty/
+rm -rf dot_config/zellij/
+ls 
+ls dot_themes/
+ls dot_themes/oh-my-posh/
+ls
+code .
+hyprlock
+ls
+brew install neovim
+hyprland --help
+hyprland --version
+bash
+exit
+ls
+exit
+ls
+chezmoi --help
+ls
+cd .config/
+ls
+cd nushell
+ls
+cd ..
+cd hypr/
+ls
+chezmoi add .
+chezmoi --help
+ls -la
+cd ..
+ls
+cd ..
+cd dotfiles/
+ls
+chezmoi --help
+ls
+ls -la
+chezmoi -S .
+chezmoi -S . init
+ls
+ls -la
+chezmoi add ../.config/hypr
+ls
+ls -la
+chezmoi --help
+chezmoi cat-config
+ls
+chezmoi init .
+am -rf ../.local/share/chezmoi/
+rm -rf ../.local/share/chezmoi/
+chezmoi init .
+ls
+ls -la
+cd ..
+ls
+chezmoi --help
+chezmoi -c
+chezmoi cat-config
+cd .config
+ls
+cd chezmoi/
+ls
+cd ..
+ls
+chezmoi cd
+ls
+cd ..
+ls
+rm -rf dotfiles/
+ls
+chezmoi cd
+ls
+cd .config/
+ls 
+chezmoi add hypr
+brew search Cascadia
+brew info cascadia
+brew info caskaydia
+ls
+brew search neovim
+brew search fzf
+brew search eza
+brew search bat
+brew info bat
+brew info eza
+brew info zoxide
+chezmoi apply
+ls
+cd ..
+ls -la
+chezmoi remove .themes
+chezmoi destroy .themes
+ls
+cd .config
+ls
+bat starship.toml
+ls
+chezmoi add starship.toml
+exit
+ls
+exit
+exit
+chezmoi apply --exclude scripts
+ls
+exit
+exit
+ls
+cd .config/chezmoi/
+ls
+cd ..
+ls
+btop
+ls
+eza
+eza --icons
+eza --icons --group-directories-first
+chezmoi apply --exclude scripts
+ls
+chezmoi apply --exclude scripts
+ls
+vi
+nvim
+nvim --help
+ls
+mkdir nvim
+ls
+cd nvim/
+ls
+ls ..
+ls .. | where size > 64B
+brew uninstall eza
+ls
+zoxide cd ..
+zoxide ..
+zoxide --help
+zoxide init nushell | save -f ~/.zoxide.nu
+zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
+exit
+ls
+cd .config
+ls
+zoxide --help
+zoxide query
+exit
+exit
+cd .config/nvim
+ls
+touch ~/.config/nvim/init.lua
+ls
+vi init.lua
+ls
+cd ..
+ls

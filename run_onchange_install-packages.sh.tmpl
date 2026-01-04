@@ -7,19 +7,12 @@ neovim
 zoxide
 fzf
 bat
-nushell
 starship
 btop
 "
 
 # Install common packages
 brew install $COMMON_PACKAGES
-
-# Change shell to nushell
-NU_PATH="$(brew --prefix nushell)/bin/nu"
-if ! [ "$SHELL" = "$NU_PATH" ]; then
-  chsh $USER -s $NU_PATH
-fi
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu

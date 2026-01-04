@@ -29,6 +29,16 @@
         "custom/power"
     ],
     // Modules configuration
+    "hyprland/workspaces": {
+        "format": "{icon}", // Use {id}, {name}, or {icon}
+        "format-icons": {
+            "1": "", // Terminal icon or "1: Term"
+            "2": "", // Web icon or "2: Web"
+            "3": "", // Code icon or "3: Code"
+            "4": "", // Code icon or "3: Code",
+            "*": "{id}" // Default icon for other workspaces
+        }
+    },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },

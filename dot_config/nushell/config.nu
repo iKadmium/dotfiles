@@ -31,7 +31,6 @@ alias cat = bat
 alias top = btop
 alias vi = nvim
 alias vim = nvim
-alias code = flatpak run com.visualstudio.code
 
 source ~/.zoxide.nu
 

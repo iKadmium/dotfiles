@@ -9,11 +9,10 @@
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/submap",
-        "sway/scratchpad"
-    ],
-    "modules-center": [
+        "sway/scratchpad",
         "hyprland/window"
     ],
+    "modules-center": [],
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",

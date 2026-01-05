@@ -9,8 +9,9 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:pink bg:orange)\
-$python\
-[](fg:orange)\
+$time\
+[](fg:pink bg:orange)\
+[](orange)\
 $line_break\
 $character"""
 
@@ -44,10 +45,11 @@ format = "[ $symbol$branch ]($style)"
 style = "bg:pink fg:background"
 format = "[$all_status$ahead_behind]($style)"
 
-[python]
-symbol = " "
+[time]
+disabled = false
+time_format = "%R"                # 24-hour format (HH:MM)
 style = "bg:orange fg:background"
-format = "[ $symbol($version) ]($style)"
+format = "[ 󰥔 $time ]($style)"
 
 [line_break]
 disabled = false

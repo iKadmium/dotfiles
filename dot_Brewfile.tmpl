@@ -1,0 +1,14 @@
+# Common packages
+brew "neovim"
+brew "zoxide"
+brew "bat"
+brew "starship"
+brew "btop"
+
+{{ if eq .chezmoi.os "linux" -}}
+# Linux-specific packages
+
+{{ else if eq .chezmoi.os "darwin" -}}
+# macOS-specific packages
+
+{{ end -}}

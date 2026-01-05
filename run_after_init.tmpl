@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+# Post-installation configuration for installed packages
+
+# Starship init - only create if file doesn't exist
+mkdir -p ~/.cache/starship
+if [ ! -f ~/.cache/starship/init.nu ]; then
+    starship init nu | save -f ~/.cache/starship/init.nu
+fi
+
+# Zoxide init - only create if file doesn't exist
+if [ ! -f ~/.zoxide.nu ]; then
+    zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
+fi
+
+{{ if eq .chezmoi.os "linux" -}}
+# Linux-specific setup
+{{ else if eq .chezmoi.os "darwin" -}}
+# macOS-specific setup
+# Only create symlink if it doesn't already exist
+if [ ! -e ~/Library/Application\ Support/nushell ]; then
+    ln -s ~/.config/nushell ~/Library/Application\ Support/nushell
+fi
+{{ end -}}

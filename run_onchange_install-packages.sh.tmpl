@@ -1,25 +1,9 @@
 #!/bin/sh
 set -e
 
-# Package list
-COMMON_PACKAGES="
-neovim
-zoxide
-fzf
-bat
-starship
-btop
-"
+# Brewfile hash: {{ include "dot_Brewfile.tmpl" | sha256sum }}
+# This script runs whenever the Brewfile changes
 
-# Install common packages
-brew install $COMMON_PACKAGES
-
-mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu
-zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
-
-{{ if eq .chezmoi.os "linux" -}}
-# Install Linux-specific packages
-{{ else if eq .chezmoi.os "darwin" -}}
-# Install macOS-specific packages
-{{ end -}}
+# Install packages from Brewfile
+# brew bundle will check what's already installed and only install what's missing
+brew bundle --global

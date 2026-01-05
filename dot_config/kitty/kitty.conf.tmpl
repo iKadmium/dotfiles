@@ -13,4 +13,9 @@ window_padding_width 8
 # shell /home/linuxbrew/.linuxbrew/bin/nu
 # shell /usr/bin/bash
 
+{{- if eq .chezmoi.os "darwin" }}
+shell /opt/homebrew/bin/nu
+font_size 18.0
+{{- end }}
+
 include dracula.conf

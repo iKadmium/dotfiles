@@ -24,7 +24,12 @@ $env.config = {
 }
 
 
+{{- if eq .chezmoi.os "darwin" }}
+$env.PATH ++= ['/opt/homebrew/bin']
+{{- else if eq .chezmoi.os "linux" }}
 $env.PATH ++= ['/home/linuxbrew/.linuxbrew/bin']
+{{- end }}
+
 
 # Aliases
 alias cat = bat

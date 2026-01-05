@@ -4,14 +4,20 @@ set -e
 # Post-installation configuration for installed packages
 
 # Starship init - only create if file doesn't exist
-mkdir -p ~/.cache/starship
 if [ ! -f ~/.cache/starship/init.nu ]; then
+    mkdir -p ~/.cache/starship
     starship init nu | save -f ~/.cache/starship/init.nu
 fi
 
 # Zoxide init - only create if file doesn't exist
 if [ ! -f ~/.zoxide.nu ]; then
     zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
+fi
+
+# Television init - only create if file doesn't exist
+if [ ! -f ~/.config/nushell/vendor/autoload/tv.nu ]; then
+    mkdir -p ~/.config/nushell/vendor/autoload
+    tv init nu > ~/.config/nushell/vendor/autoload/tv.nu
 fi
 
 {{ if eq .chezmoi.os "linux" -}}

@@ -37,7 +37,11 @@ alias top = btop
 alias vi = nvim
 alias vim = nvim
 
-source ~/.zoxide.nu
-
 # Starship prompt (run 'starship init nu | save -f ~/.cache/starship/init.nu' once to regenerate)
 source ~/.cache/starship/init.nu
+source ~/.zoxide.nu
+
+# Source local config if it exists
+if ("~/config.local.nu" | path expand | path exists) {
+    source ~/config.local.nu
+}

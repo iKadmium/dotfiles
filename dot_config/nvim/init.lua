@@ -1,9 +1,6 @@
--- Enable relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Install and configure Dracula theme
--- Using lazy.nvim plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -15,16 +12,13 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
+-- Use the direct vim.opt syntax
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup plugins
 require("lazy").setup({
-    {
-        "Mofiqul/dracula.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.cmd([[colorscheme dracula]])
-        end,
-    },
+    require("colors"), -- This passes the table from lua/colors.lua to lazy
 })
+
+-- Load and run the Nushell logic
+require("nushell").setup()

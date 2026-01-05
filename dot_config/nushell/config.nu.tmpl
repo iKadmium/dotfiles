@@ -23,6 +23,7 @@ $env.config = {
     edit_mode: vi      # Or 'emacs'
 }
 
+$env.EDITOR = "nvim"
 
 {{- if eq .chezmoi.os "darwin" }}
 $env.PATH ++= ['/opt/homebrew/bin']

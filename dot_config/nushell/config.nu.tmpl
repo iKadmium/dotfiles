@@ -43,6 +43,5 @@ source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
 
 # Source local config if it exists
-if ("~/config.local.nu" | path expand | path exists) {
-    source ~/config.local.nu
-}
+const local_config = if ("~/config.local.nu" | path expand | path exists) { "~/config.local.nu" | path expand } else { null }
+source $local_config

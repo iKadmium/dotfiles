@@ -18,8 +18,11 @@ fi
 
 echo "$NEW_VAL" > "$STATE_FILE"
 
+# Get the currently focused monitor
+MONITOR=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name')
+
 # Apply the change
-hyprctl keyword "monitorv2[eDP-1]:sdrbrightness" "$NEW_VAL"
+hyprctl keyword "monitorv2[$MONITOR]:sdrbrightness" "$NEW_VAL"
 
 # Signal Waybar to refresh (RTMIN+8 corresponds to signal: 8)
 pkill -RTMIN+8 waybar

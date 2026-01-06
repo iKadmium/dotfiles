@@ -46,12 +46,13 @@
         }
     },
     "custom/sdr_backlight": {
-        "exec": "awk '{print int($1*100)\"%\"}' /tmp/hypr_sdr_brightness",
-        "return-type": "",
-        "interval": 2,
+        "exec": "~/.local/bin/waybar-hdr-brightness.sh",
+        "return-type": "json",
+        "interval": 30,
         "format": "{text} 🌕",
         "on-scroll-up": "~/.local/bin/hdr-brightness.sh up",
-        "on-scroll-down": "~/.local/bin/hdr-brightness.sh down"
+        "on-scroll-down": "~/.local/bin/hdr-brightness.sh down",
+        "signal": 8
     },
     "tray": {
         // "icon-size": 21,

@@ -3,9 +3,6 @@ README.md
 .config/hypr/
 .config/rofi
 .config/waybar/
-.config/wlogout/
 .local/bin/hdr-brightness.sh
-Pictures/dracula_background.png
-{{- if ne .chezmoi.os "darwin"}}
-Pictures/wallpaper/dracula_macos.png
+{{- else if ne .chezmoi.os "darwin" }}
 {{- end }}

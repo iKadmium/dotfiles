@@ -24,8 +24,4 @@ fi
 # Linux-specific setup
 {{ else if eq .chezmoi.os "darwin" -}}
 # macOS-specific setup
-# Only create symlink if it doesn't already exist
-if [ ! -e ~/Library/Application\ Support/nushell ]; then
-    ln -s ~/.config/nushell ~/Library/Application\ Support/nushell
-fi
 {{ end -}}

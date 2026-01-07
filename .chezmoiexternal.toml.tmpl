@@ -1,0 +1,17 @@
+
+{{- if eq .chezmoi.os "linux" }}
+["Pictures/wallpaper/dracula.png"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/wallpaper/refs/heads/master/first-collection/fedora.png"
+    refreshPeriod = "168h"
+{{- else if eq .chezmoi.os "darwin"}}
+["Pictures/wallpaper/dracula.png"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/wallpaper/refs/heads/master/first-collection/macos.png"
+    refreshPeriod = "168h"
+{{- else }}
+["Pictures/wallpaper/dracula.png"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/wallpaper/refs/heads/master/first-collection/base.png"
+    refreshPeriod = "168h"
+{{- end}}

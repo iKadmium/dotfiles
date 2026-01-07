@@ -1,5 +1,8 @@
 // -*- mode: jsonc -*-
 {
+    "include": [
+        "sections/power.jsonc"
+    ],
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
@@ -8,12 +11,13 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/submap",
-        "sway/scratchpad",
+        "hyprland/submap"
+    ],
+    "modules-center": [
         "hyprland/window"
     ],
-    "modules-center": [],
     "modules-right": [
+        "mpris",
         "pulseaudio",
         "custom/sdr_backlight",
         "battery",
@@ -37,13 +41,6 @@
     },
     "hyprland/window": {
         "icon": true
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
     },
     "custom/sdr_backlight": {
         "exec": "~/.local/bin/waybar-hdr-brightness.sh",
@@ -111,51 +108,13 @@
         },
         "on-click": "pavucontrol"
     },
-    "group/group-power": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-power",
-            "transition-left-to-right": false,
+    "mpris": {
+        "format": "{status_icon} {artist} - {title} [{position} / {length}]",
+        "status-icons": {
+            "playing": "",
+            "paused": ""
         },
-        "modules": [
-            "custom/power", // First element is the "group leader" and won't ever be hidden
-            "custom/quit",
-            "custom/lock",
-            "custom/reboot",
-            "idle_inhibitor",
-            "power-profiles-daemon"
-        ]
-    },
-    "custom/quit": {
-        "format": "",
-        "tooltip-format": "Quit",
-        "on-click": "hyprctl dispatch exit"
-    },
-    "custom/lock": {
-        "format": "",
-        "tooltip-format": "Lock",
-        "on-click": "hyprlock"
-    },
-    "custom/reboot": {
-        "format": "",
-        "tooltip-format": "Reboot",
-        "on-click": "reboot"
-    },
-    "custom/power": {
-        "format": "",
-        "tooltip-format": "Shutdown",
-        "on-click": "shutdown now"
-    },
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
+        "interval": 1,
+        // "ignored-players": ["firefox"]
     }
 }

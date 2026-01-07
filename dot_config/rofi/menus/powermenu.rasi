@@ -1,0 +1,35 @@
+configuration {
+    show-icons:                 false;
+    /* Map keys to select specific rows (1-5) */
+    kb-select-1:                "l"; // Lock
+    kb-select-2:                "u"; // sUspend
+    kb-select-3:                "e"; // Edit/Logout
+    kb-select-4:                "r"; // Reboot
+    kb-select-5:                "s"; // Shutdown
+}
+
+@import "../dracula.rasi" /* Or your preferred base theme */
+
+window {
+    width:                        300px;
+    location:                     center;
+    anchor:                       center;
+}
+
+mainbox {
+    /* Removing 'inputbar' creates the 'no-input' effect */
+    children:                     [ "message", "listview" ];
+    spacing:                      10px;
+    padding:                      20px;
+}
+
+listview {
+    lines:                        5;
+    columns:                      1;
+    cycle:                        true;
+    scrollbar:                    false;
+}
+
+element-text {
+    horizontal-align:             0.0;
+}

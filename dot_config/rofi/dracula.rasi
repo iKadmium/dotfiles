@@ -20,15 +20,15 @@ configuration {
     drac-red: #ff5555;
     drac-yel: #f1fa8c;
 
-    font: "Cascadia Code 12";
+    font: "'Cascadia Code' 12, 'Font Awesome 6 Free Solid' 12";
     foreground: #f8f8f2;
     background-color: @drac-bgd;
     active-background: @drac-cmt;
     urgent-background: @drac-red;
     urgent-foreground: @drac-bgd;
-    selected-background: @active-background;
+    selected-background: @drac-pur;
     selected-urgent-background: @urgent-background;
-    selected-active-background: @active-background;
+    selected-active-background: @selected-background;
     separatorcolor: @active-background;
     bordercolor: @drac-pur;
 }
@@ -143,4 +143,7 @@ configuration {
 element-text, element-icon {
     background-color: inherit;
     text-color: inherit;
+}
+element-icon {
+    margin: 0px 4px 0px 0px;
 }

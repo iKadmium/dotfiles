@@ -1,0 +1,37 @@
+{
+    "group/group-power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "custom/power", // First element is the "group leader" and won't ever be hidden
+            "idle_inhibitor",
+            "power-profiles-daemon"
+        ]
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip-format": "Shutdown",
+        "on-click": "~/.config/rofi/menus/powermenu.sh"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    }
+}

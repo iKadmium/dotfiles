@@ -1,2 +1,7 @@
 
 @theme "dracula.rasi"
+
+configuration {
+    modi: "window,drun,ssh,my-mode:~/.config/rofi/menus/powermenu.sh";
+    font: "'Cascadia Code' 12, 'Font Awesome 6 Free Solid' 12";
+}

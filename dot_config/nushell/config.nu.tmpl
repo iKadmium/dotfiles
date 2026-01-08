@@ -26,9 +26,13 @@ $env.config = {
 $env.EDITOR = "nvim"
 
 {{- if eq .chezmoi.os "darwin" }}
+# macOS paths
+
 $env.PATH ++= ['/opt/homebrew/bin']
+
 {{- else if eq .chezmoi.os "linux" }}
-$env.PATH ++= ['/home/linuxbrew/.linuxbrew/bin']
+# Linux paths
+
 {{- end }}
 
 

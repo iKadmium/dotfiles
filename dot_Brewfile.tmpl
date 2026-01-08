@@ -8,9 +8,13 @@ brew "television"
 brew "fd"
 brew "lazygit"
 brew "gh"
+brew "yazi"
 
 {{ if eq .chezmoi.os "linux" -}}
 # Linux-specific packages
+brew "yt-dlp"
+
+flatpak "app.zen_browser.zen", args: { system: true }
 
 {{ else if eq .chezmoi.os "darwin" -}}
 # macOS-specific packages

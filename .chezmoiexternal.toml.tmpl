@@ -1,17 +1,33 @@
 
 {{- if eq .chezmoi.os "linux" }}
+
+# Wallpaper
 ["Pictures/wallpaper/dracula.png"]
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/wallpaper/refs/heads/master/first-collection/fedora.png"
     refreshPeriod = "168h"
+
+# LosslessCut
+[".local/bin/losslesscut"]
+    type = "file"
+    url = "https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-x86_64.AppImage"
+    executable = true
+    refreshPeriod = "168h"
+
 {{- else if eq .chezmoi.os "darwin"}}
+
+# Wallpaper
 ["Pictures/wallpaper/dracula.png"]
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/wallpaper/refs/heads/master/first-collection/macos.png"
     refreshPeriod = "168h"
+
 {{- else }}
+
+# Wallpaper
 ["Pictures/wallpaper/dracula.png"]
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/wallpaper/refs/heads/master/first-collection/base.png"
     refreshPeriod = "168h"
+    
 {{- end}}

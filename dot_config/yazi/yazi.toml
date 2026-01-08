@@ -1,0 +1,8 @@
+[[plugin.prepend_preloaders]]
+url = "sftp://opi/**"
+run = "mime"
+prio = "high"
+
+[[plugin.prepend_previewers]]
+url = "sftp://opi/**"
+run = "video"         # For video thumbnails (requires ffmpeg)

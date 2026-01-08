@@ -115,6 +115,8 @@
             "paused": ""
         },
         "interval": 1,
-        // "ignored-players": ["firefox"]
+        "ignored-players": [
+            "chromium"
+        ]
     }
 }

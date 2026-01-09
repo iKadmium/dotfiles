@@ -1,5 +1,11 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = -1  -- A value of -1 makes softtabstop use shiftwidth
+vim.opt.expandtab = false -- or vim.opt.noexpandtab = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -16,9 +22,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup plugins
-require("lazy").setup({
-    require("colors"), -- This passes the table from lua/colors.lua to lazy
-})
+require("lazy").setup("plugins")
+
+-- Load keybindings
+require("keymaps")
 
 -- Load and run the Nushell logic
 require("nushell").setup()

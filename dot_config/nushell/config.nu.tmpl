@@ -46,6 +46,9 @@ alias vim = nvim
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
 
+use theme.nu
+$env.config.color_config = (theme dracula_theme)
+
 # Source local config if it exists
 const local_config = if ("~/config.local.nu" | path expand | path exists) { "~/config.local.nu" | path expand } else { null }
 source $local_config

@@ -1,0 +1,10 @@
+#!/bin/bash
+# Path to the key file
+KEY_FILE="$HOME/.config/chezmoi/key.txt"
+
+if [ ! -f "$KEY_FILE" ]; then
+    mkdir -p "$(dirname "$KEY_FILE")"
+    # This pulls the key from the template variable we set in step 2
+    echo {{ .ageKey | quote }} > "$KEY_FILE"
+    chmod 600 "$KEY_FILE"
+fi

@@ -1,0 +1,18 @@
+{{- $ageKey := "" -}}
+
+{{- if stdinIsATTY -}}
+{{-   $ageKey = lastpassRaw "Chezmoi Age Key" -}}
+{{- else -}}
+   # If we are not in a TTY, we check if the key already exists on disk
+{{-   if not (stat (joinPath .chezmoi.homeDir ".config/chezmoi/key.txt")) -}}
+{{-     exit "ERROR: Age key not found and no TTY available for LastPass login. Please run 'lpass login' and 'chezmoi apply' manually." -}}
+{{-   end -}}
+{{- end -}}
+
+encryption = "age"
+[age]
+    identity = "~/.config/chezmoi/key.txt"
+    recipient = "age1jgdmn8ew7d4hghkpk4r7m59czlq94v9rdj5w9dch0y0cpwx0kf8qehjrct" # Your public age key
+
+[data]
+    ageKey = {{ $ageKey | quote }}

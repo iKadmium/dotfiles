@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "windows" -}}
+
+REM winget-packages.json hash: {{ include "winget-packages.json" | sha256sum }}
+
+winget import -i "%USERPROFILE%\.config\chezmoi\winget-packages.json" --accept-source-agreements --accept-package-agreements
+{{- end -}}

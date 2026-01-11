@@ -1,0 +1,71 @@
+{
+	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate" : "2026-01-11T16:17:58.130-00:00",
+	"Sources" : 
+	[
+		{
+			"Packages" : 
+			[
+				{
+					"PackageIdentifier" : "SurgeSynth.SurgeXT"
+				},
+				{
+					"PackageIdentifier" : "Docker.DockerDesktop"
+				},
+				{
+					"PackageIdentifier" : "Git.Git"
+				},
+				{
+					"PackageIdentifier" : "Cockos.REAPER"
+				},
+				{
+					"PackageIdentifier" : "LizardByte.Sunshine"
+				},
+				{
+					"PackageIdentifier" : "Zen-Team.Zen-Browser"
+				},
+				{
+					"PackageIdentifier" : "Starship.Starship"
+				},
+				{
+					"PackageIdentifier" : "Nushell.Nushell"
+				},
+				{
+					"PackageIdentifier" : "Neovim.Neovim"
+				},
+				{
+					"PackageIdentifier" : "Valve.Steam"
+				},
+				{
+					"PackageIdentifier" : "SpitfireAudioHoldingsLtd.SpitfireAudio"
+				},
+				{
+					"PackageIdentifier" : "ajeetdsouza.zoxide"
+				},
+				{
+					"PackageIdentifier" : "alexpasmantier.television"
+				},
+				{
+					"PackageIdentifier" : "sharkdp.bat"
+				},
+				{
+					"PackageIdentifier" : "twpayne.chezmoi"
+				},
+				{
+					"PackageIdentifier" : "Anjok07.UltimateVocalRemover"
+				},
+				{
+					"PackageIdentifier" : "BurntSushi.ripgrep.GNU"
+				},
+			],
+			"SourceDetails" : 
+			{
+				"Argument" : "https://cdn.winget.microsoft.com/cache",
+				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name" : "winget",
+				"Type" : "Microsoft.PreIndexed.Package"
+			}
+		}
+	],
+	"WinGetVersion" : "1.12.350"
+}

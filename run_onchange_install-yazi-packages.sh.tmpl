@@ -1,3 +1,4 @@
+{{ if ne .chezmoi.os "windows" -}}
 #!/bin/bash
 
 # package.toml hash: {{ include "dot_config/yazi/package.toml" | sha256sum }}
@@ -8,3 +9,4 @@ if command -v ya >/dev/null 2>&1; then
 else
     echo "Warning: 'ya' binary not found. Skipping Yazi package sync."
 fi
+{{ end -}}

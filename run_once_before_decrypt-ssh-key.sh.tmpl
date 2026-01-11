@@ -1,3 +1,5 @@
+{{ if ne .chezmoi.os "windows" -}}
+
 #!/bin/bash
 # Path to the key file
 KEY_FILE="$HOME/.config/chezmoi/key.txt"
@@ -8,3 +10,5 @@ if [ ! -f "$KEY_FILE" ]; then
     echo {{ .ageKey | quote }} > "$KEY_FILE"
     chmod 600 "$KEY_FILE"
 fi
+
+{{ end -}}

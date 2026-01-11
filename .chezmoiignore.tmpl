@@ -1,13 +1,29 @@
 README.md
 {{- if ne .chezmoi.os "linux" }}
+# Linux-only stuff goes here
+
 .config/hypr/
 .config/rofi
 .config/waybar/
 .local/bin/hdr-brightness.sh
 .local/share/applications/losslesscut.desktop
 .local/share/icons/losslesscut.png
+
 {{- else if ne .chezmoi.os "darwin" }}
+# macos-only stuff goes here
 Library
+
+{{- else if eq .chezmoi.os "windows" }}
+# Non-windows stuff goes here
+
+.config/btop
+.config/kitty
+.config/lazygit
+.config/nvim
+.config/starship.toml
+.config/television
+.config/yazi
+
 {{- end }}
 
 bin/bootstrap.sh

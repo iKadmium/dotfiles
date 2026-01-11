@@ -1,3 +1,4 @@
+{{ if ne .chezmoi.os "windows" -}}
 #!/bin/sh
 set -e
 
@@ -7,3 +8,5 @@ set -e
 # Install packages from Brewfile
 # brew bundle will check what's already installed and only install what's missing
 brew bundle --global
+
+{{ end -}}

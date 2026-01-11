@@ -1,7 +1,11 @@
+{{ if ne .chezmoi.os "windows" -}}
 #!/bin/sh
 set -e
 
 # Post-installation configuration for installed packages
+
+# Setup for non-Windows systems
+
 
 # Starship init - only create if file doesn't exist
 if [ ! -f ~/.cache/starship/init.nu ]; then
@@ -19,6 +23,8 @@ if [ ! -f ~/.config/nushell/vendor/autoload/tv.nu ]; then
     mkdir -p ~/.config/nushell/vendor/autoload
     tv init nu > ~/.config/nushell/vendor/autoload/tv.nu
 fi
+
+{{ end -}}
 
 {{ if eq .chezmoi.os "linux" -}}
 # Linux-specific setup

@@ -1,0 +1,19 @@
+@echo off
+REM Post-installation configuration for installed packages
+
+REM Starship init - only create if file doesn't exist
+if not exist "%USERPROFILE%\.cache\starship\init.nu" (
+    mkdir "%USERPROFILE%\.cache\starship" 2>nul
+    starship init nu > "%USERPROFILE%\.cache\starship\init.nu"
+)
+
+REM Zoxide init - only create if file doesn't exist
+if not exist "%USERPROFILE%\.zoxide.nu" (
+    zoxide init nushell --cmd cd > "%USERPROFILE%\.zoxide.nu"
+)
+
+REM Television init - only create if file doesn't exist
+if not exist "%USERPROFILE%\.config\nushell\vendor\autoload\tv.nu" (
+    mkdir "%USERPROFILE%\.config\nushell\vendor\autoload" 2>nul
+    tv init nu > "%USERPROFILE%\.config\nushell\vendor\autoload\tv.nu"
+)

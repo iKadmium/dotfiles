@@ -4,18 +4,15 @@ set -e
 
 # Post-installation configuration for installed packages
 
-# Setup for non-Windows systems
-
-
 # Starship init - only create if file doesn't exist
 if [ ! -f ~/.cache/starship/init.nu ]; then
     mkdir -p ~/.cache/starship
-    starship init nu | save -f ~/.cache/starship/init.nu
+    starship init nu > ~/.cache/starship/init.nu
 fi
 
 # Zoxide init - only create if file doesn't exist
 if [ ! -f ~/.zoxide.nu ]; then
-    zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
+    zoxide init nushell --cmd cd > ~/.zoxide.nu
 fi
 
 # Television init - only create if file doesn't exist
@@ -24,10 +21,29 @@ if [ ! -f ~/.config/nushell/vendor/autoload/tv.nu ]; then
     tv init nu > ~/.config/nushell/vendor/autoload/tv.nu
 fi
 
-{{ end -}}
-
 {{ if eq .chezmoi.os "linux" -}}
 # Linux-specific setup
 {{ else if eq .chezmoi.os "darwin" -}}
 # macOS-specific setup
+{{ end -}}
+{{ else -}}
+@echo off
+REM Post-installation configuration for installed packages
+
+REM Starship init - only create if file doesn't exist
+if not exist "%USERPROFILE%\.cache\starship\init.nu" (
+    mkdir "%USERPROFILE%\.cache\starship"
+    starship init nu > "%USERPROFILE%\.cache\starship\init.nu"
+)
+
+REM Zoxide init - only create if file doesn't exist
+if not exist "%USERPROFILE%\.zoxide.nu" (
+    zoxide init nushell --cmd cd > "%USERPROFILE%\.zoxide.nu"
+)
+
+REM Television init - only create if file doesn't exist
+if not exist "%USERPROFILE%\.config\nushell\vendor\autoload\tv.nu" (
+    mkdir "%USERPROFILE%\.config\nushell\vendor\autoload"
+    tv init nu > "%USERPROFILE%\.config\nushell\vendor\autoload\tv.nu"
+)
 {{ end -}}

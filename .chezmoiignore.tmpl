@@ -9,21 +9,31 @@ README.md
 .local/share/applications/losslesscut.desktop
 .local/share/icons/losslesscut.png
 
-{{- else if ne .chezmoi.os "darwin" }}
+{{ end -}}
+
+{{- if ne .chezmoi.os "darwin" }}
 # macos-only stuff goes here
 Library
 
-{{- else if eq .chezmoi.os "windows" }}
+{{- end }}
+
+{{- if ne .chezmoi.os "windows" }}
 # Non-windows stuff goes here
 
 .config/btop
 .config/kitty
 .config/lazygit
 .config/nvim
-.config/starship.toml
 .config/television
 .config/yazi
 .ssh
+
+
+{{- end }}
+
+{{- if eq .chezmoi.os "windows" }}
+# Windows-only stuff goes here
+AppData
 
 {{- end }}
 

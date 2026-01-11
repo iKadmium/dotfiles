@@ -17,7 +17,7 @@ Library
 
 {{- end }}
 
-{{- if ne .chezmoi.os "windows" }}
+{{- if eq .chezmoi.os "windows" }}
 # Non-windows stuff goes here
 
 .config/btop
@@ -28,10 +28,9 @@ Library
 .config/yazi
 .ssh
 
-
 {{- end }}
 
-{{- if eq .chezmoi.os "windows" }}
+{{- if ne .chezmoi.os "windows" }}
 # Windows-only stuff goes here
 AppData
 

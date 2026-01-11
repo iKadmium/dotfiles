@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "windows" }}
 @echo off
 REM Post-installation configuration for installed packages
 
@@ -17,3 +18,5 @@ if not exist "%USERPROFILE%\.config\nushell\vendor\autoload\tv.nu" (
     mkdir "%USERPROFILE%\.config\nushell\vendor\autoload" 2>nul
     tv init nu > "%USERPROFILE%\.config\nushell\vendor\autoload\tv.nu"
 )
+
+{{ end -}}

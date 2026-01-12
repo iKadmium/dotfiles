@@ -1,0 +1,152 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "MIDI Mixer Configuration",
+    "description": "Configuration schema for MIDI mixer channels and devices",
+    "type": "object",
+    "properties": {
+        "channels": {
+            "type": "object",
+            "description": "Collection of channel groups",
+            "additionalProperties": {
+                "type": "object",
+                "description": "Key-value pairs of controls for this channel",
+                "additionalProperties": {
+                    "type": "object",
+                    "required": [
+                        "device",
+                        "channel",
+                        "key"
+                    ],
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "cc",
+                                "cc-bool",
+                                "pc"
+                            ],
+                            "description": "Control type (cc for standard CC, cc-bool for boolean CC, pc for program change)"
+                        },
+                        "device": {
+                            "type": "string",
+                            "description": "Reference to device name defined in devices. MUST match a key in the devices object (validated at application level)."
+                        },
+                        "channel": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 15,
+                            "description": "MIDI channel number (0-15)"
+                        },
+                        "cc": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 127,
+                            "description": "MIDI Control Change number (0-127)"
+                        },
+                        "programs": {
+                            "type": "array",
+                            "description": "List of program names (for program change controls)",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "key": {
+                            "type": "string",
+                            "maxLength": 1,
+                            "description": "Keyboard shortcut key for toggling (for cc-bool controls)"
+                        },
+                        "glyphs": {
+                            "type": "object",
+                            "description": "Custom glyphs for boolean display (cc-bool only)",
+                            "properties": {
+                                "on": {
+                                    "type": "string",
+                                    "description": "Glyph to display when value is ON/true"
+                                },
+                                "off": {
+                                    "type": "string",
+                                    "description": "Glyph to display when value is OFF/false"
+                                }
+                            },
+                            "required": [
+                                "on",
+                                "off"
+                            ]
+                        }
+                    },
+                    "allOf": [
+                        {
+                            "if": {
+                                "properties": {
+                                    "type": {
+                                        "const": "pc"
+                                    }
+                                },
+                                "required": [
+                                    "type"
+                                ]
+                            },
+                            "then": {
+                                "required": [
+                                    "programs"
+                                ],
+                                "not": {
+                                    "required": [
+                                        "cc"
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "not": {
+                                    "properties": {
+                                        "type": {
+                                            "const": "pc"
+                                        }
+                                    },
+                                    "required": [
+                                        "type"
+                                    ]
+                                }
+                            },
+                            "then": {
+                                "required": [
+                                    "cc"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "devices": {
+            "type": "object",
+            "description": "MIDI device definitions",
+            "additionalProperties": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "output_device"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "midi"
+                        ],
+                        "description": "Device type"
+                    },
+                    "output_device": {
+                        "type": "string",
+                        "description": "Name of the MIDI output device"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "channels",
+        "devices"
+    ]
+}

@@ -1,0 +1,91 @@
+{
+    "$schema": "./midi_mixer.schema.json",
+    "channels": {
+        "Vocals": {
+            "Volume": {
+                "device": "widi-bud",
+                "channel": 0,
+                "cc": 81,
+                "key": "v"
+            },
+            "Mute": {
+                "type": "cc-bool",
+                "device": "widi-bud",
+                "channel": 0,
+                "cc": 93,
+                "key": "m",
+                "glyphs": {
+                    "on": "🔇",
+                    "off": ""
+                }
+            },
+            "Aux 2 Send": {
+                "device": "widi-bud",
+                "channel": 0,
+                "cc": 57,
+                "key": "s"
+            }
+        },
+        "Guitar": {
+            "Volume": {
+                "device": "widi-bud",
+                "channel": 0,
+                "cc": 85,
+                "key": "v"
+            },
+            "Mute": {
+                "type": "cc-bool",
+                "device": "widi-bud",
+                "channel": 0,
+                "cc": 103,
+                "key": "m",
+                "glyphs": {
+                    "on": "🔇",
+                    "off": ""
+                }
+            },
+            "Program": {
+                "type": "pc",
+                "device": "widi-bud",
+                "channel": 1,
+                "programs": [
+                    "Clean",
+                    "Crunch",
+                    "Rhythm",
+                    "Lead"
+                ],
+                "key": "p"
+            }
+        },
+        "MacBook": {
+            "Volume": {
+                "device": "widi-bud",
+                "channel": 0,
+                "cc": 86,
+                "key": "v"
+            }
+        },
+        "DAW": {
+            "Volume": {
+                "device": "widi-bud",
+                "channel": 0,
+                "cc": 87,
+                "key": "v"
+            }
+        },
+        "Linux PC": {
+            "Volume": {
+                "device": "widi-bud",
+                "channel": 0,
+                "cc": 88,
+                "key": "v"
+            }
+        }
+    },
+    "devices": {
+        "widi-bud": {
+            "type": "midi",
+            "output_device": "WIDI Bud Pro MIDI 1"
+        }
+    }
+}

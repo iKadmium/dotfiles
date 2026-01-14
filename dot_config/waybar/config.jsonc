@@ -21,6 +21,7 @@
         "pulseaudio",
         "custom/sdr_backlight",
         "battery",
+        "custom/updates",
         "clock",
         "tray",
         "group/group-power"
@@ -43,12 +44,20 @@
         "icon": true
     },
     "custom/sdr_backlight": {
-        "exec": "~/.local/bin/waybar-hdr-brightness.sh",
+        "exec": "~/.config/waybar/scripts/waybar-hdr-brightness.sh",
         "return-type": "json",
         "interval": 30,
         "format": "{text} 🌕",
         "on-scroll-up": "~/.local/bin/hdr-brightness.sh up",
         "on-scroll-down": "~/.local/bin/hdr-brightness.sh down",
+        "signal": 8
+    },
+    "custom/updates": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/waybar-check-updates.sh",
+        "restart-interval": 60, // Refresh icon every minute
+        "on-click": "pkexec ~/.config/waybar/scripts/waybar-check-updates.sh && pkill -RTMIN+8 waybar",
         "signal": 8
     },
     "tray": {

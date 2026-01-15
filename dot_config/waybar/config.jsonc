@@ -20,7 +20,7 @@
         "mpris",
         "pulseaudio",
         "custom/sdr_backlight",
-        "battery",
+        "custom/battery",
         "custom/updates",
         "clock",
         "tray",
@@ -70,29 +70,10 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%I:%M %p}"
     },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
+    "custom/battery": {
+        "exec": "~/.config/waybar/scripts/waybar-get-battery.sh",
+        "return-type": "json",
+        "interval": 30
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

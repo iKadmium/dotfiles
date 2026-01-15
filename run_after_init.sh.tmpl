@@ -9,6 +9,12 @@ if [ ! -f ~/.cache/starship/init.nu ]; then
     starship init nu > ~/.cache/starship/init.nu
 fi
 
+# Carapace init - only create if file doesn't exist
+if [ ! -f ~/.cache/carapace/init.nu ]; then
+    mkdir -p ~/.cache/carapace
+    CARAPACE_BRIDGES='zsh,fish,bash' carapace _carapace nushell > ~/.cache/carapace/init.nu
+fi
+
 # Zoxide init - only create if file doesn't exist
 if [ ! -f ~/.zoxide.nu ]; then
     zoxide init nushell --cmd cd > ~/.zoxide.nu

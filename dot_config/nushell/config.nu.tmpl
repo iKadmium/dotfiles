@@ -47,6 +47,12 @@ alias grep = rg -i
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu
 
+{{ if ne .chezmoi.os "windows" -}}
+# Carapace autocomplete (run 'carapace _carapace nushell | save --force ~/.cache/carapace/init.nu' once to regenerate)
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash'
+source ~/.cache/carapace/init.nu
+{{ end -}}
+
 use theme.nu
 $env.config.color_config = (theme dracula_theme)
 
@@ -54,4 +60,3 @@ $env.config.color_config = (theme dracula_theme)
 const local_config = if ("~/config.local.nu" | path expand | path exists) { "~/config.local.nu" | path expand } else { null }
 source $local_config
 
-source completions/git-completions.nu

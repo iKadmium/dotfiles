@@ -1,71 +1,71 @@
 {
-	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-01-11T16:17:58.130-00:00",
-	"Sources" : 
-	[
+	"$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate": "2026-01-11T16:17:58.130-00:00",
+	"Sources": [
 		{
-			"Packages" : 
-			[
+			"Packages": [
 				{
-					"PackageIdentifier" : "SurgeSynth.SurgeXT"
+					"PackageIdentifier": "SurgeSynth.SurgeXT"
 				},
 				{
-					"PackageIdentifier" : "Docker.DockerDesktop"
+					"PackageIdentifier": "Docker.DockerDesktop"
 				},
 				{
-					"PackageIdentifier" : "Git.Git"
+					"PackageIdentifier": "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "Cockos.REAPER"
+					"PackageIdentifier": "Cockos.REAPER"
 				},
 				{
-					"PackageIdentifier" : "LizardByte.Sunshine"
+					"PackageIdentifier": "LizardByte.Sunshine"
 				},
 				{
-					"PackageIdentifier" : "Zen-Team.Zen-Browser"
+					"PackageIdentifier": "Zen-Team.Zen-Browser"
 				},
 				{
-					"PackageIdentifier" : "Starship.Starship"
+					"PackageIdentifier": "Starship.Starship"
 				},
 				{
-					"PackageIdentifier" : "Nushell.Nushell"
+					"PackageIdentifier": "Nushell.Nushell"
 				},
 				{
-					"PackageIdentifier" : "Neovim.Neovim"
+					"PackageIdentifier": "Neovim.Neovim"
 				},
 				{
-					"PackageIdentifier" : "Valve.Steam"
+					"PackageIdentifier": "Valve.Steam"
 				},
 				{
-					"PackageIdentifier" : "SpitfireAudioHoldingsLtd.SpitfireAudio"
+					"PackageIdentifier": "SpitfireAudioHoldingsLtd.SpitfireAudio"
 				},
 				{
-					"PackageIdentifier" : "ajeetdsouza.zoxide"
+					"PackageIdentifier": "ajeetdsouza.zoxide"
 				},
 				{
-					"PackageIdentifier" : "alexpasmantier.television"
+					"PackageIdentifier": "alexpasmantier.television"
 				},
 				{
-					"PackageIdentifier" : "sharkdp.bat"
+					"PackageIdentifier": "sharkdp.bat"
 				},
 				{
-					"PackageIdentifier" : "twpayne.chezmoi"
+					"PackageIdentifier": "twpayne.chezmoi"
 				},
 				{
-					"PackageIdentifier" : "Anjok07.UltimateVocalRemover"
+					"PackageIdentifier": "Anjok07.UltimateVocalRemover"
 				},
 				{
-					"PackageIdentifier" : "BurntSushi.ripgrep.GNU"
+					"PackageIdentifier": "BurntSushi.ripgrep.GNU"
 				},
+				{
+					"PackageIdentifier": "dandavison.delta"
+				}
 			],
-			"SourceDetails" : 
-			{
-				"Argument" : "https://cdn.winget.microsoft.com/cache",
-				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
-				"Name" : "winget",
-				"Type" : "Microsoft.PreIndexed.Package"
+			"SourceDetails": {
+				"Argument": "https://cdn.winget.microsoft.com/cache",
+				"Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name": "winget",
+				"Type": "Microsoft.PreIndexed.Package"
 			}
 		}
 	],
-	"WinGetVersion" : "1.12.350"
+	"WinGetVersion": "1.12.350"
 }

@@ -18,6 +18,9 @@ brew "delta"
 brew "yt-dlp"
 
 flatpak "app.zen_browser.zen", args: { system: true }
+{{ if .enableGaming -}}
+flatpak "com.valvesoftware.Steam", args: { system: true }
+{{ end -}}
 
 {{ else if eq .chezmoi.os "darwin" -}}
 # macOS-specific packages

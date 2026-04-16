@@ -1,41 +1,47 @@
 README.md
-{{- if ne .chezmoi.os "linux" }}
-# Linux-only stuff goes here
+bin/bootstrap.sh
 
+{{- if eq .chezmoi.os "linux" }}
+# Linux - conditionally ignore based on features
+    {{- if not .enableHyprland }}
+# Hyprland configs (disabled)
 .config/hypr/
-.config/rofi
+.config/rofi/
+.config/waybar/
+.local/bin/hdr-brightness.sh
+    {{- end }}
+.ssh
+
+{{- else if eq .chezmoi.os "darwin" }}
+# macOS - ignore Linux/Windows specific stuff
+.config/hypr/
+.config/rofi/
 .config/waybar/
 .local/bin/hdr-brightness.sh
 .local/share/applications/losslesscut.desktop
 .local/share/icons/losslesscut.png
-
 .ssh
+AppData
+winget-packages.json
 
-{{ end -}}
-
-{{- if ne .chezmoi.os "darwin" }}
-# macos-only stuff goes here
-Library
-
-{{- end }}
-
-{{- if eq .chezmoi.os "windows" }}
-# Non-windows stuff goes here
-
+{{- else if eq .chezmoi.os "windows" }}
+# Windows - ignore Linux/macOS specific stuff
 .config/btop
 .config/kitty
 .config/lazygit
 .config/television
 .config/yazi
+.config/hypr/
+.config/rofi/
+.config/waybar/
+.local/bin/hdr-brightness.sh
+.local/share/applications/losslesscut.desktop
+.local/share/icons/losslesscut.png
 .ssh
+Library
+    {{- if not .enableAudio }}
+# Audio production tools (disabled)
+AppData/Roaming/REAPER
+    {{- end }}
 
 {{- end }}
-
-{{- if ne .chezmoi.os "windows" }}
-# Windows-only stuff goes here
-AppData
-winget-packages.json
-
-{{- end }}
-
-bin/bootstrap.sh

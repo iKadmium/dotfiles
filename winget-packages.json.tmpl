@@ -5,19 +5,10 @@
 		{
 			"Packages": [
 				{
-					"PackageIdentifier": "SurgeSynth.SurgeXT"
-				},
-				{
 					"PackageIdentifier": "Docker.DockerDesktop"
 				},
 				{
 					"PackageIdentifier": "Git.Git"
-				},
-				{
-					"PackageIdentifier": "Cockos.REAPER"
-				},
-				{
-					"PackageIdentifier": "LizardByte.Sunshine"
 				},
 				{
 					"PackageIdentifier": "Zen-Team.Zen-Browser"
@@ -32,12 +23,6 @@
 					"PackageIdentifier": "Neovim.Neovim"
 				},
 				{
-					"PackageIdentifier": "Valve.Steam"
-				},
-				{
-					"PackageIdentifier": "SpitfireAudioHoldingsLtd.SpitfireAudio"
-				},
-				{
 					"PackageIdentifier": "ajeetdsouza.zoxide"
 				},
 				{
@@ -50,14 +35,29 @@
 					"PackageIdentifier": "twpayne.chezmoi"
 				},
 				{
-					"PackageIdentifier": "Anjok07.UltimateVocalRemover"
-				},
-				{
 					"PackageIdentifier": "BurntSushi.ripgrep.GNU"
 				},
 				{
 					"PackageIdentifier": "dandavison.delta"
-				}
+				}{{- if .enableGaming }},
+				{
+					"PackageIdentifier": "Valve.Steam"
+				},
+				{
+					"PackageIdentifier": "LizardByte.Sunshine"
+				}{{- end }}{{- if .enableAudio }},
+				{
+					"PackageIdentifier": "SurgeSynth.SurgeXT"
+				},
+				{
+					"PackageIdentifier": "Cockos.REAPER"
+				},
+				{
+					"PackageIdentifier": "SpitfireAudioHoldingsLtd.SpitfireAudio"
+				},
+				{
+					"PackageIdentifier": "Anjok07.UltimateVocalRemover"
+				}{{- end }}
 			],
 			"SourceDetails": {
 				"Argument": "https://cdn.winget.microsoft.com/cache",

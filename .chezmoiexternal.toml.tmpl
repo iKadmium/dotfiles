@@ -30,10 +30,12 @@
     url = "https://raw.githubusercontent.com/dracula/wallpaper/refs/heads/master/first-collection/base.png"
     refreshPeriod = "168h"
 
+{{- if .enableAudio }}
 # ReaPack for REAPER
 ["AppData/Roaming/REAPER/UserPlugins/reaper_reapack-x64.dll"]
     type = "file"
     url = "https://github.com/cfillion/reapack/releases/latest/download/reaper_reapack-x64.dll"
     refreshPeriod = "168h"
-    
+{{- end }}
+
 {{- end}}

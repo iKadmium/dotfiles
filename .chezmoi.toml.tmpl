@@ -16,5 +16,10 @@
         recipient = "age1jgdmn8ew7d4hghkpk4r7m59czlq94v9rdj5w9dch0y0cpwx0kf8qehjrct" # Your public age key
 
     [data]
+        {{- if stdinIsATTY }}
+        enableHyprland = {{ promptBool "install hyprland window manager configs" false }}
+        enableAudio = {{ promptBool "enable audio production tools" false }}
+        enableGaming = {{ promptBool "enable gaming tools" false }}
+        {{- end }}
         ageKey = {{ $ageKey | quote }}
 {{- end -}}

@@ -22,4 +22,13 @@
         enableGaming = {{ promptBool "enable gaming tools" false }}
         {{- end }}
         ageKey = {{ $ageKey | quote }}
+{{- else -}}
+    [data]
+        {{- if stdinIsATTY }}
+        enableAudio = {{ promptBool "enable audio production tools" false }}
+        enableGaming = {{ promptBool "enable gaming tools" false }}
+        {{- else }}
+        enableAudio = false
+        enableGaming = false
+        {{- end }}
 {{- end -}}

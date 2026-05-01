@@ -1,0 +1,7 @@
+{{- if eq .chezmoi.os "windows" -}}
+
+REM winget-packages.json hash: {{ include "private_AppData/private_Local/Packages/winget-packages.json.tmpl" | sha256sum }}
+
+set "WINGET_PACKAGES_FILE={{ .chezmoi.homeDir | replace "/" "\\" }}\AppData\Local\Packages\winget-packages.json"
+winget import -i "%WINGET_PACKAGES_FILE%" --accept-source-agreements --accept-package-agreements
+{{- end -}}

@@ -1,3 +1,4 @@
+{{ if ne .chezmoi.os "windows" -}}
 #!/bin/sh
 set -e
 
@@ -30,4 +31,5 @@ fi
 # Linux-specific setup
 {{ else if eq .chezmoi.os "darwin" -}}
 # macOS-specific setup
+{{ end -}}
 {{ end -}}

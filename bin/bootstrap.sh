@@ -19,4 +19,4 @@ lpass login jesse.d.higginson@gmail.com
 # 4. Initialize Chezmoi
 # This will trigger the .toml.tmpl, pull the Age key, and decrypt your SSH keys
 echo "Initializing dotfiles..."
-chezmoi init --apply https://github.com/iKadmium/dotfiles.git
+chezmoi init --apply https://github.com/ikadmium/dotfiles.git

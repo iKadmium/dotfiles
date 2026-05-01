@@ -1,44 +1,35 @@
 README.md
 bin/bootstrap.sh
-
-{{- if eq .chezmoi.os "linux" }}
-# Linux - conditionally ignore based on features
-    {{- if not .enableHyprland }}
-# Hyprland configs (disabled)
-.config/hypr/
-.config/rofi/
-.config/waybar/
-.local/bin/hdr-brightness.sh
-    {{- end }}
 .ssh
 
-{{- else if eq .chezmoi.os "darwin" }}
-# macOS - ignore Linux/Windows specific stuff
-.config/hypr/
-.config/rofi/
-.config/waybar/
-.local/bin/hdr-brightness.sh
-.local/share/applications/losslesscut.desktop
-.local/share/icons/losslesscut.png
-.ssh
+{{- if ne .chezmoi.os "windows" }}
 AppData
 winget-packages.json
+{{- end }}
 
-{{- else if eq .chezmoi.os "windows" }}
+{{- if not .enableHyprland }}
+.config/hypr/
+.config/rofi/
+.config/waybar/
+.local/bin/hdr-brightness.sh
+{{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
+.local/share/applications/losslesscut.desktop
+.local/share/icons/losslesscut.png
+{{- end }}
+
+{{- if ne .chezmoi.os "darwin" }}
+Library
+{{- end }}
+
+{{- if and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
 # Windows - ignore Linux/macOS specific stuff
 .config/btop
 .config/kitty
 .config/lazygit
 .config/television
 .config/yazi
-.config/hypr/
-.config/rofi/
-.config/waybar/
-.local/bin/hdr-brightness.sh
-.local/share/applications/losslesscut.desktop
-.local/share/icons/losslesscut.png
-.ssh
-Library
     {{- if not .enableAudio }}
 # Audio production tools (disabled)
 AppData/Roaming/REAPER

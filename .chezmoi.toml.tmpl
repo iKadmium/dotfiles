@@ -1,19 +1,25 @@
 {{- if ne .chezmoi.os "windows" -}}
     {{- $ageKey := "" -}}
+    {{- $enableSSH := false -}}
 
     {{- if stdinIsATTY -}}
-    {{-   $ageKey = lastpassRaw "Chezmoi Age Key" -}}
+    {{-   $enableSSH = promptBool "enable SSH key management" false -}}
+    {{-   if $enableSSH -}}
+    {{-     $ageKey = (index (lastpassRaw "Chezmoi Age Key") 0).note -}}
+    {{-   end -}}
     {{- else -}}
-    # If we are not in a TTY, we check if the key already exists on disk
-    {{-   if not (stat (joinPath .chezmoi.homeDir ".config/chezmoi/key.txt")) -}}
-    {{-     exit "ERROR: Age key not found and no TTY available for LastPass login. Please run 'lpass login' and 'chezmoi apply' manually." -}}
+    # If we are not in a TTY, infer enableSSH from whether the key file already exists
+    {{-   if stat (joinPath .chezmoi.homeDir ".config/chezmoi/key.txt") -}}
+    {{-     $enableSSH = true -}}
     {{-   end -}}
     {{- end -}}
 
+    {{- if $enableSSH }}
     encryption = "age"
     [age]
         identity = "~/.config/chezmoi/key.txt"
         recipient = "age1jgdmn8ew7d4hghkpk4r7m59czlq94v9rdj5w9dch0y0cpwx0kf8qehjrct" # Your public age key
+    {{- end }}
 
     [data]
         {{- if stdinIsATTY }}
@@ -21,6 +27,7 @@
         enableAudio = {{ promptBool "enable audio production tools" false }}
         enableGaming = {{ promptBool "enable gaming tools" false }}
         {{- end }}
+        enableSSH = {{ $enableSSH }}
         ageKey = {{ $ageKey | quote }}
 {{- else -}}
     [data]
@@ -32,4 +39,5 @@
         enableGaming = false
         {{- end }}
         enableHyprland = false
+        enableSSH = false
 {{- end -}}

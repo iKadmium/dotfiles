@@ -1,10 +1,13 @@
 README.md
 bin/bootstrap.sh
-.ssh
 
 {{- if ne .chezmoi.os "windows" }}
 AppData
 winget-packages.json
+{{- end }}
+
+{{- if not .enableSSH }}
+.ssh
 {{- end }}
 
 {{- if not .enableHyprland }}

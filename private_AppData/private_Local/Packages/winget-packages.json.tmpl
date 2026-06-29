@@ -42,10 +42,13 @@
 				},
 				{
 					"PackageIdentifier": "dandavison.delta"
-				}{{- if .enableGaming }},
+				}
+				{{- if .enableGaming }},
 				{
 					"PackageIdentifier": "Valve.Steam"
-				}{{- end }}{{- if .enableAudio }},
+				}
+				{{- end }}
+				{{- if .enableAudio }},
 				{
 					"PackageIdentifier": "SurgeSynth.SurgeXT"
 				},
@@ -54,7 +57,8 @@
 				},
 				{
 					"PackageIdentifier": "Anjok07.UltimateVocalRemover"
-				}{{- end }}
+				}
+				{{- end }}
 			],
 			"SourceDetails": {
 				"Argument": "https://cdn.winget.microsoft.com/cache",

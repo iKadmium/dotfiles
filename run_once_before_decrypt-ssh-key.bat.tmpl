@@ -1,0 +1,20 @@
+{{ if and (eq .chezmoi.os "windows") .enableSSH -}}
+@echo off
+setlocal
+
+set KEY_FILE=%USERPROFILE%\.config\chezmoi\key.txt
+set SOURCE_DIR={{ .chezmoi.sourceDir }}
+
+if not exist "%USERPROFILE%\.config\chezmoi" (
+    mkdir "%USERPROFILE%\.config\chezmoi"
+)
+
+if not exist "%KEY_FILE%" (
+    nu --no-config-file "%SOURCE_DIR%\scripts\get-age-key.nu" "%KEY_FILE%"
+    if errorlevel 1 (
+        if exist "%KEY_FILE%" del /f "%KEY_FILE%"
+        echo Error: Failed to retrieve age key from LastPass.
+        exit /b 1
+    )
+)
+{{ end -}}

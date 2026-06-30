@@ -1,14 +1,9 @@
-{{ if and (eq .chezmoi.os "linux") .enableSSH -}}
-
-#!/bin/bash
-# Path to the key file
+{{ if and (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) .enableSSH -}}
+#!/bin/sh
 KEY_FILE="$HOME/.config/chezmoi/key.txt"
 
 if [ ! -f "$KEY_FILE" ]; then
     mkdir -p "$(dirname "$KEY_FILE")"
-    # This pulls the key from the template variable we set in step 2
-    printf '%b' {{ .ageKey | quote }} > "$KEY_FILE"
-    chmod 600 "$KEY_FILE"
+    nu --no-config-file "{{ .chezmoi.sourceDir }}/scripts/get-age-key.nu" "$KEY_FILE"
 fi
-
 {{ end -}}

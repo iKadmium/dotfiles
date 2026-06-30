@@ -50,7 +50,9 @@ def main [key_file?: string] {
         print $note
     } else {
         $note | save --force $key_file
-        ^chmod 600 $key_file
+        if $nu.os-info.name != "windows" {
+            ^chmod 600 $key_file
+        }
         print --stderr $"(ansi green)Age key written to ($key_file)(ansi reset)"
     }
 }

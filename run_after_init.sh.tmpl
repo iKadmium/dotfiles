@@ -2,34 +2,10 @@
 #!/bin/sh
 set -e
 
-# Post-installation configuration for installed packages
-
-# Starship init - only create if file doesn't exist
-if [ ! -f ~/.cache/starship/init.nu ]; then
-    mkdir -p ~/.cache/starship
-    starship init nu > ~/.cache/starship/init.nu
+if ! command -v nu >/dev/null 2>&1; then
+    echo "Error: nushell (nu) is not installed or not in PATH" >&2
+    exit 1
 fi
 
-# Carapace init - only create if file doesn't exist
-if [ ! -f ~/.cache/carapace/init.nu ]; then
-    mkdir -p ~/.cache/carapace
-    CARAPACE_BRIDGES='zsh,fish,bash' carapace _carapace nushell > ~/.cache/carapace/init.nu
-fi
-
-# Zoxide init - only create if file doesn't exist
-if [ ! -f ~/.zoxide.nu ]; then
-    zoxide init nushell --cmd cd > ~/.zoxide.nu
-fi
-
-# Television init - only create if file doesn't exist
-if [ ! -f ~/.config/nushell/vendor/autoload/tv.nu ]; then
-    mkdir -p ~/.config/nushell/vendor/autoload
-    tv init nu > ~/.config/nushell/vendor/autoload/tv.nu
-fi
-
-{{ if eq .chezmoi.os "linux" -}}
-# Linux-specific setup
-{{ else if eq .chezmoi.os "darwin" -}}
-# macOS-specific setup
-{{ end -}}
+nu "$CHEZMOI_SOURCE_DIR/init.nu"
 {{ end -}}

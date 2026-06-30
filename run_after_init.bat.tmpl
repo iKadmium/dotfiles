@@ -1,22 +1,11 @@
 {{ if eq .chezmoi.os "windows" }}
 @echo off
-REM Post-installation configuration for installed packages
 
-REM Starship init - only create if file doesn't exist
-if not exist "%USERPROFILE%\.cache\starship\init.nu" (
-    mkdir "%USERPROFILE%\.cache\starship" 2>nul
-    starship init nu > "%USERPROFILE%\.cache\starship\init.nu"
+where nu >nul 2>&1
+if errorlevel 1 (
+    echo Error: nushell (nu) is not installed or not in PATH >&2
+    exit /b 1
 )
 
-REM Zoxide init - only create if file doesn't exist
-if not exist "%USERPROFILE%\.zoxide.nu" (
-    zoxide init nushell --cmd cd > "%USERPROFILE%\.zoxide.nu"
-)
-
-REM Television init - only create if file doesn't exist
-if not exist "%USERPROFILE%\.config\nushell\vendor\autoload\tv.nu" (
-    mkdir "%USERPROFILE%\.config\nushell\vendor\autoload" 2>nul
-    tv init nu > "%USERPROFILE%\.config\nushell\vendor\autoload\tv.nu"
-)
-
+nu "%CHEZMOI_SOURCE_DIR%\init.nu"
 {{ end -}}

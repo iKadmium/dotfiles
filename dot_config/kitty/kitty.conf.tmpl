@@ -8,6 +8,11 @@ disable_ligatures never
 window_padding_width 8
 
 {{- if eq .chezmoi.os "darwin" }}
+shell /opt/homebrew/bin/zellij attach main
+map cmd+t no_op
+map ctrl+tab no_op
+map ctrl+shift+tab no_op
+
 shell /opt/homebrew/bin/nu
 font_size 18.0
 
@@ -19,7 +24,7 @@ Explicitly map the Linux-style shortcuts (if not already active)
 map cmd+shift+c copy_to_clipboard
 map cmd+shift+v paste_from_clipboard
 {{- else}}
-shell nu
+shell zellij attach main
 font_size 12.0
 {{- end }}
 

@@ -187,16 +187,6 @@ keybinds clear-defaults=true {
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
-
-        bind "{{ $modifier }} 1" { GoToTab 1; }
-        bind "{{ $modifier }} 2" { GoToTab 2; }
-        bind "{{ $modifier }} 3" { GoToTab 3; }
-        bind "{{ $modifier }} 4" { GoToTab 4; }
-        bind "{{ $modifier }} 5" { GoToTab 5; }
-        bind "{{ $modifier }} 6" { GoToTab 6; }
-        bind "{{ $modifier }} 7" { GoToTab 7; }
-        bind "{{ $modifier }} 8" { GoToTab 8; }
-        bind "{{ $modifier }} 9" { GoToTab 9; }
     }
     shared_except "locked" "scroll" "search" "tmux" {
         bind "Ctrl b" { SwitchToMode "tmux"; }
@@ -326,7 +316,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-// theme "dracula"
+theme "dracula"
  
 // Theme to use when the host terminal reports a dark color palette.
 // Requires `theme_light` to also be set; otherwise `theme` is used.

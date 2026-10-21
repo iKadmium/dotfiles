@@ -58,6 +58,9 @@ $env.config.keybindings ++= [
 
 # Starship prompt (run 'starship init nu | save -f ~/.cache/starship/init.nu' once to regenerate)
 source ~/.cache/starship/init.nu
+# Zoxide's init writes a bool, but inherited env vars arrive as strings —
+# normalize before its `not $__zoxide_hooked` check chokes on "true".
+$env.__zoxide_hooked = (try { $env.__zoxide_hooked } catch { false } | into bool)
 source ~/.zoxide.nu
 
 {{ if ne .chezmoi.os "windows" -}}

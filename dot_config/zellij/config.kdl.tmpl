@@ -229,6 +229,9 @@ keybinds clear-defaults=true {
         bind "l" { PageScrollDown; }
         bind "Ctrl s" { SwitchToMode "normal"; }
         bind "u" { HalfPageScrollUp; }
+
+        bind "[" { ScrollToPreviousPrompt; }
+        bind "]" { ScrollToNextPrompt; }
     }
     entersearch {
         bind "Ctrl c" { SwitchToMode "scroll"; }
@@ -342,6 +345,7 @@ default_shell "{{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/nu{{ else }}nu{
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
 // default_cwd "/tmp"
+default_cwd "~"
  
 // The name of the default layout to load on startup
 // Default: "default"

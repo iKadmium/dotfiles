@@ -24,6 +24,11 @@ $env.config = {
 }
 
 $env.EDITOR = "nvim"
+$env.PAGER = "moor"
+
+{{- if or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux") }}
+$env.MANPAGER = "sh -c 'col -bx | moor'"
+{{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
 # macOS paths
@@ -42,6 +47,7 @@ alias top = btop
 alias vi = nvim
 alias vim = nvim
 alias grep = rg -i
+alias less = moor
 
 # Keybinds
 

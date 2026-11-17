@@ -59,7 +59,6 @@ keybinds clear-defaults=true {
         bind "s" { ToggleActiveSyncTab; SwitchToMode "normal"; }
         bind "{{ $modifier }} t" { SwitchToMode "normal"; }
         bind "x" { CloseTab; SwitchToMode "normal"; }
-        bind "tab" { ToggleTab; }
     }
     resize {
         bind "left" { Resize "Increase left"; }
@@ -134,7 +133,7 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "normal"
         }
-        bind "Ctrl o" { SwitchToMode "normal"; }
+        bind "{{ $modifier }} o" { SwitchToMode "normal"; }
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
                 floating true
@@ -171,12 +170,21 @@ keybinds clear-defaults=true {
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
+
+        bind "{{ $modifier }} Shift p" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+                floating true
+                ignore_case true
+                quick_jump true
+            }
+        }
+
     }
     shared_except "locked" "move" {
         bind "Ctrl h" { SwitchToMode "move"; }
     }
     shared_except "locked" "session" {
-        bind "Ctrl o" { SwitchToMode "session"; }
+        bind "{{ $modifier }} o" { SwitchToMode "session"; }
     }
     shared_except "locked" "scroll" {
         bind "{{ $modifier }} Alt left" { MoveFocusOrTab "left"; }
@@ -192,7 +200,7 @@ keybinds clear-defaults=true {
         bind "Ctrl b" { SwitchToMode "tmux"; }
     }
     shared_except "locked" "scroll" "search" {
-        bind "Ctrl s" { SwitchToMode "scroll"; }
+        bind "{{ $modifier }} f" { SwitchToMode "scroll"; }
     }
     shared_except "locked" "tab" {
         bind "{{ $modifier }} t" { SwitchToMode "tab"; }
@@ -340,7 +348,7 @@ default_mode "normal"
 // Default: $SHELL
 // 
 // default_shell "fish"
-default_shell "{{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/nu{{ else }}nu{{ end }}"
+default_shell "nu"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
@@ -440,12 +448,17 @@ default_cwd "~"
 // Default: <RANDOM>
 // 
 // session_name "My singleton session"
+
+session_name "main"
  
 // When `session_name` is provided, attaches to that session
 // if it is already running or creates it otherwise.
 // Default: false
 // 
-// attach_to_session true
+// attach_to_session: true
+attach_to_session true
+
+create_session_on_unattach true
  
 // Toggle between having Zellij lay out panes according to a predefined set of layouts whenever possible
 // Options:
